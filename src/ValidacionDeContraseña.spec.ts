@@ -302,26 +302,6 @@ describe("comprobarTienePalabrasComunes", () => {
         expect(resultado).toThrowError("No se ha proporcionado una clave")
     });
 
-    it("Deberia devolver un throw en caso de que las commonPasswords sean undefined", () => {
-        //Arrange
-        const clave: any = "1234"
-        const commonPasswords: any = undefined
-        //Act
-        const resultado = () => tienePalabrasComunes(clave, commonPasswords)
-        //Assert
-        expect(resultado).toThrowError("No se ha proporcionado la lista de palabras comunes")
-    });
-
-    it("Deberia devolver un throw en caso de que las commonPasswords sean null", () => {
-        //Arrange
-        const clave: any = "1234"
-        const commonPasswords: any = null
-        //Act
-        const resultado = () => tienePalabrasComunes(clave,commonPasswords)
-        //Assert
-        expect(resultado).toThrowError("No se ha proporcionado la lista de palabras comunes")
-    });
-
     it("Deberia devolver esValida a true si la clave no contiene palabras de la lista commonPasswords", () => {
         //Arrange
         const clave:string = "1234"

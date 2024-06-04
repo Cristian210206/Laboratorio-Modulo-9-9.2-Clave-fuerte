@@ -37,13 +37,7 @@ export const validarClave = (
     esValida: true
   }
 
-  let numeroError: number = 0
-
-  const resultadoComprobaciones = () => comprobacionesContraseña.some((comprobacionContraseña, numeroArray) => {
-    numeroError = numeroArray
-    return comprobacionContraseña[numeroArray].esValida === false
-  })
-  /*for(let i = 0; i < comprobacionesContraseña.length; i++) {
+  for(let i = 0; i < comprobacionesContraseña.length; i++) {
     if(comprobacionesContraseña[i].esValida === true) {
       resultado = {
         esValida: true
@@ -52,6 +46,6 @@ export const validarClave = (
       resultado = comprobacionesContraseña[i]
       break
     } 
-  }*/
+  }
   return resultado
 };

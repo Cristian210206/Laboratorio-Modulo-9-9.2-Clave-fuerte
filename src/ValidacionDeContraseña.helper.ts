@@ -58,6 +58,13 @@ export interface ValidacionClave {
     error?: string;
   }
 
+  export const mostrarError = (mensajeError: string) :ValidacionClave => {
+    return {
+        esValida: false,
+        error: mensajeError
+    }
+  }
+
 export const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
     if(!clave){
         throw new Error("No se ha proporcionado una clave")
@@ -67,10 +74,7 @@ export const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
             esValida: true
         }
     } else {
-        return{
-            esValida: false,
-            error: "La contraseña debe contener mayusculas y minusculas"
-        }
+        return mostrarError("La contraseña debe contener mayusculas y minusculas")
     }
   };
 
@@ -83,10 +87,7 @@ export const tieneNumeros = (clave: string): ValidacionClave => {
             esValida: true
         }
     } else {
-        return {
-            esValida: false,
-            error: "La contraseña debe contener al menos 1 numero"
-        }
+        return mostrarError("La contraseña debe contener al menos 1 numero")
     }
   };
 
@@ -99,10 +100,7 @@ export const tieneNumeros = (clave: string): ValidacionClave => {
             esValida: true
         }
     } else {
-        return {
-            esValida: false,
-            error: "La contraseña debe contener al menos 1 caracter especial"
-        }
+        return mostrarError("La contraseña debe contener al menos 1 caracter especial")
     }
   };
 
@@ -111,10 +109,7 @@ export const tieneNumeros = (clave: string): ValidacionClave => {
         throw new Error("No se ha proporcionado una clave")
     }
     if(clave.length < 8) {
-        return {
-            esValida: false,
-            error: "La contraseña tiene una longitud menos a 8 caracteres"
-        }
+        return mostrarError("La contraseña tiene una longitud menos a 8 caracteres")
     } else {
         return {esValida: true}
     }
@@ -134,10 +129,7 @@ export const tieneNumeros = (clave: string): ValidacionClave => {
         throw new Error("No se ha proporcionado un nombre de usuario")
     }
     if(clave.match(nombreUsuario)) {
-        return {
-            esValida: false,
-            error: "La contraseña no puede contener el nombre de usuario"
-        }
+        return mostrarError("La contraseña no puede contener el nombre de usuario")
     } else {
         return {
             esValida: true
@@ -155,9 +147,6 @@ export const tieneNumeros = (clave: string): ValidacionClave => {
     if(!clave ){
         throw new Error("No se ha proporcionado una clave")
     }
-    if(!commonPasswords) {
-        throw new Error("No se ha proporcionado la lista de palabras comunes")
-    }
     let resultado: ValidacionClave = {
         esValida: true
     }
@@ -170,10 +159,7 @@ export const tieneNumeros = (clave: string): ValidacionClave => {
             esValida: true
         }
     } else {
-        return {
-            esValida: false,
-            error: "La contraseña contiene palabras comunes"
-        }
+        return mostrarError("La contraseña contiene palabras comunes")
     }
     return resultado
 };
